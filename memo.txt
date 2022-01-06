@@ -1,6 +1,0 @@
----[ MySQL ]---
-database_name: scraping_db
-table_name: py_table
-user_name: root
-password: password
-port: 3306
