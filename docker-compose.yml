@@ -1,36 +1,37 @@
 version: "3"
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: scraping_db
-      MYSQL_USER: root
-      # MYSQL_ROOT_PASSWORD: password#0
-      MYSQL_PASSWORD: password
-      TZ: 'Asia/Tokyo'
-      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-    - ./db/data:/var/lib/mysql
-    - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
-    - ./db/sql:/docker-entrypoint-initdb.d
-    ports:
-    - 3306:3306
-  redis:
-    image: "redis:alpine"
-    ports:
-      - "6379:6379"
-    volumes:
-      - "./data/redis:/data"
-  web:
-    build: .
-    volumes:
-      - .:/python_app
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
-      - redis
-    environment:
-      TZ: Asia/Tokyo
-    stdin_open: true
-    tty: true
+    db:
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: django-db
+            MYSQL_USER: django
+            MYSQL_PASSWORD: password
+            TZ: 'Asia/Tokyo'
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        # volumes:
+        # - ./db/data:/var/lib/mysql
+        # - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+        # - ./db/sql:/docker-entrypoint-initdb.d
+        ports:
+        - 3306:3306
+    # redis:
+    #     image: "redis:alpine"
+    #     ports:
+    #     - "6379:6379"
+    #     volumes:
+    #     - "./data/redis:/data"
+    web:
+        build: .
+        command: bash -c "rm -f tmp/pids/server.pid && python3 manage.py runserver '0.0.0.0:8080'"
+        volumes:
+            - .:/pyapp
+        ports:
+            - "8080:80"
+        depends_on:
+            - db
+            # - redis
+        environment:
+            TZ: Asia/Tokyo
+        stdin_open: true
+        tty: true
