@@ -4,10 +4,10 @@
 | 項目 | 使用(予定)技術 | その他特記事項 |
 |:---|:---|:---|
 |Host-OS |macOS Big Sur (ver11.4) |- |
-|frontend |HTML, CSS/SCSS, JavaScript |React実装予定 |
-|backtend |Python |frameworkはDjangoを使用 |
-|infrastructure |Docker, docker-compose |- |
-|container-env |debian11.2, MySQL8.0, Nginx1.18, Redis6.0.16 |- |
+|Frontend |HTML, CSS/SCSS, JavaScript |React実装予定 |
+|Backtend |Python |frameworkはDjangoを使用 |
+|Infrastructure |Docker, docker-compose |- |
+|Container-Env |debian11.2, MySQL8.0, Nginx1.18, Redis6.0.16 |- |
 
 
 ## 初回起動設定
