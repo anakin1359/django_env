@@ -7,7 +7,7 @@
 |frontend |HTML, CSS/SCSS, JavaScript |React実装予定 |
 |backtend |Python |frameworkはDjangoを使用 |
 |infrastructure |Docker, docker-compose |- |
-|container-server |MySQL8.0, Nginx1.18, Redis6.0.16 |- |
+|container-env |debian11.2, MySQL8.0, Nginx1.18, Redis6.0.16 |- |
 
 
 ## 初回起動設定
@@ -19,11 +19,15 @@ docker-compose build
 ```
 docker-compose up
 ```
+* ブラウザアクセス確認(Portはdocker-composeの設定により適宜変更)
+```
+http://localhost:8000/
+```
 * Python Applicationに接続
 ```
 docker-compose exec app bash
 ```
-* Django Install Command 
+* Django Install Command (初回起動時のみ必要)
 ```
 docker-compose exec app django-admin.py startproject app .
 ```
