@@ -31,3 +31,36 @@ docker-compose exec app bash
 ```
 docker-compose exec app django-admin.py startproject app .
 ```
+
+* ディレクトリ構成
+```
+.
+|-- README.md
+|-- docker
+|   |-- mysql
+|   |   |-- Dockerfile  
+|   |   `-- my.cnf      
+|   |-- nginx
+|   |   |-- default.conf
+|   |   `-- uwsgi_params
+|   `-- python
+|       |-- Dockerfile
+|       `-- requirements.txt
+|-- docker-compose.yml
+
+<Django Install後に以下自動生成>
+
+`-- src
+    |-- app
+    |   |-- __init__.py
+    |   |-- __pycache__
+    |   |   |-- __init__.cpython-38.pyc
+    |   |   |-- settings.cpython-38.pyc
+    |   |   |-- urls.cpython-38.pyc    
+    |   |   `-- wsgi.cpython-38.pyc    
+    |   |-- asgi.py
+    |   |-- settings.py
+    |   |-- urls.py
+    |   `-- wsgi.py
+    `-- manage.py
+```
