@@ -18,11 +18,10 @@ services:
     volumes:
       - "./data/redis:/data"
 
-
   # Excution Python Application
-  app:
+  django_project:
       build: ./docker/python
-      command: uwsgi --socket :8080 --module app.wsgi --py-autoreload 1 --logto /tmp/tmp.log
+      command: uwsgi --socket :8080 --module django_project.wsgi --py-autoreload 1 --logto /tmp/tmp.log
       volumes:
         - ./src:/workspace
       expose:
@@ -44,7 +43,7 @@ services:
     depends_on:
       - db
       - redis
-      - app
+      - django_project
 
 volumes:
   db-store:
