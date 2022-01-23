@@ -55,7 +55,7 @@ docker-compose exec django_project python manage.py startapp ${django_app}
 <Django Install後に以下自動生成>
 
 `-- src
-    |-- app
+    |-- ${django_project_app}
     |   |-- __init__.py
     |   |-- __pycache__
     |   |   |-- __init__.cpython-38.pyc
